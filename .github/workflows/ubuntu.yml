@@ -1,0 +1,33 @@
+name: Telegram Bot
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Запуск каждые 15 минут
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Start Building...
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        run: sudo apt-get update && sudo apt-get install python3 -y
+
+      - name: Install pip
+        run: sudo apt-get install python3-pip -y
+
+      - name: Install telebot and requests
+        run: |
+          pip3 install python-telegram-bot requests
+
+      - name: Run Telegram Bot
+        run: |
+          git clone https://github.com/kingclone/smsbot.git
+          cd smsbot
+          pip install requests 
+          pip install telebot
+          python3 bot.py
