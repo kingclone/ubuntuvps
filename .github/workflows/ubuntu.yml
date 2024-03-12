@@ -2,7 +2,7 @@ name: Telegram Bot
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Запуск каждые 15 минут
+    - cron: '*/29 * * * *'  # Запуск каждые 15 минут
   workflow_dispatch:
 
 jobs:
@@ -31,3 +31,4 @@ jobs:
           pip install requests 
           pip install telebot
           python3 bot.py
+
